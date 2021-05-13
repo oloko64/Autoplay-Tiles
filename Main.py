@@ -30,29 +30,16 @@ while (True):
     # Convert to PIL/Pillow Image
     im = Image.frombytes('RGB', sct_img.size, sct_img.bgra, 'raw', 'BGRX')
 
-    if (im.getpixel(coordenada1) == (0, 0, 0)):
+    if (im.getpixel(coordenada1) < (54, 100, 255)):
         # print(f'TILE FOUND at {coordenada1} or 1 TILE')
         pyautogui.click(coordenada1)
-    elif (im.getpixel(coordenada2) == (0, 0, 0)):
+    elif (im.getpixel(coordenada2) < (54, 100, 255)):
         # print(f'TILE FOUND at {coordenada2} or 2 TILE')
         pyautogui.click(coordenada2)
-    elif (im.getpixel(coordenada3) == (0, 0, 0)):
+    elif (im.getpixel(coordenada3) < (54, 100, 255)):
         # print(f'TILE FOUND at {coordenada3} or 3 TILE')
         pyautogui.click(coordenada3)
-    elif (im.getpixel(coordenada4) == (0, 0, 0)):
-        # print(f'TILE FOUND at {coordenada4} or 4 TILE')
-        pyautogui.click(coordenada4)
-
-    elif (im.getpixel(coordenada1) == (16, 20, 19)):
-        # print(f'TILE FOUND at {coordenada1} or 1 TILE')
-        pyautogui.click(coordenada1)
-    elif (im.getpixel(coordenada2) == (16, 20, 19)):
-        # print(f'TILE FOUND at {coordenada2} or 2 TILE')
-        pyautogui.click(coordenada2)
-    elif (im.getpixel(coordenada3) == (16, 20, 19)):
-        # print(f'TILE FOUND at {coordenada3} or 3 TILE')
-        pyautogui.click(coordenada3)
-    elif (im.getpixel(coordenada4) == (16, 20, 19)):
+    elif (im.getpixel(coordenada4) < (54, 100, 255)):
         # print(f'TILE FOUND at {coordenada4} or 4 TILE')
         pyautogui.click(coordenada4)
 
