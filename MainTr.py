@@ -3,6 +3,13 @@ from threading import Thread
 import pyautogui
 from PIL import Image
 from mss import mss
+##
+##
+
+# This is the website that I am playing the game: https://www.silvergames.com/en/piano-tiles#play
+
+##
+##
 
 time.sleep(0.5)
 # part of the screen
@@ -15,24 +22,15 @@ coordenada2 = 650, 600
 coordenada3 = 760, 600
 coordenada4 = 865, 600
 
-imgGlobal = 0
-
 print('started...')
 
 def task():
-    global imgGlobal
-    
     while(True):
-        with mss() as sct:
-            monitor = sct.monitors[0]
-            sct_img = sct.grab(monitor)
-            # Convert to PIL/Pillow Image
-            imgGlobal = Image.frombytes('RGB', sct_img.size, sct_img.bgra, 'raw', 'BGRX')
+        monitor = mss().monitors[0]
+        sct_img = mss().grab(monitor)
+        # Convert to PIL/Pillow Image
+        im = Image.frombytes('RGB', sct_img.size, sct_img.bgra, 'raw', 'BGRX')
 
-
-def calc():
-    while(True):
-        im = imgGlobal
         if (im.getpixel(coordenada1) == (0, 0, 0)):
             # print(f'TILE FOUND at {coordenada1} or 1 TILE')
             pyautogui.click(coordenada1)
@@ -64,18 +62,23 @@ def calc():
         # count = count + 1
         # aux = False
 
+
+
+
 # create two new threads
 t1 = Thread(target=task)
-t2 = Thread(target=calc)
+t2 = Thread(target=task)
 # t3 = Thread(target=task)
 
 # start the threads
 t1.start()
 t2.start()
 # t3.start()
+
+
 # wait for the threads to complete
-t1.join()
-t2.join()
+# t1.join()
+# t2.join()
 # t3.join()
 
 # im.save("box.png")

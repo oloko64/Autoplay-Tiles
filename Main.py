@@ -3,6 +3,14 @@ import pyautogui
 from PIL import Image
 from mss import mss
 
+##
+##
+
+# This is the website that I am playing the game: https://www.silvergames.com/en/piano-tiles#play
+
+##
+##
+
 time.sleep(0.5)
 # part of the screen
 # aux = True
@@ -17,11 +25,10 @@ coordenada4 = 865, 600
 print('Started...')
 while (True):
 
-    with mss() as sct:
-        monitor = sct.monitors[0]
-        sct_img = sct.grab(monitor)
-        # Convert to PIL/Pillow Image
-        im = Image.frombytes('RGB', sct_img.size, sct_img.bgra, 'raw', 'BGRX')
+    monitor = mss().monitors[0]
+    sct_img = mss().grab(monitor)
+    # Convert to PIL/Pillow Image
+    im = Image.frombytes('RGB', sct_img.size, sct_img.bgra, 'raw', 'BGRX')
 
     if (im.getpixel(coordenada1) == (0, 0, 0)):
         # print(f'TILE FOUND at {coordenada1} or 1 TILE')
